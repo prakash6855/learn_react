@@ -31,10 +31,10 @@ export default function TextForm(props) {
         ></textarea>
       </div>
       <button className="btn btn-info mx-1" onClick={handleUpClick}>
-        Click Me To Upper Case
+        Click Here To Upper Case
       </button>
       <button className="btn btn-info mx-1" onClick={handleLoClick}>
-        Click Me To Lower Case
+        Click Here To Lower Case
       </button>
     </div>
     <div className="container my-2"> 
