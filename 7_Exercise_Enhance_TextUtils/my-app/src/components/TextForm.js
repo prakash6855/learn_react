@@ -22,6 +22,12 @@ export default function TextForm(props) {
       .join(" ");
     setText(newText);
   };
+
+  const handleCopy = ()=>{
+    var text = document.getElementById("myBox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+  }
   const handleClearClick = () => {
     // console.log("You just clicked" +text);
     let newText = "";
@@ -55,6 +61,9 @@ export default function TextForm(props) {
         </button>
         <button className="btn btn-info mx-1" onClick={handleTitleClick}>
           Click here to Title Case
+        </button>
+        <button className="btn btn-info mx-1" onClick={handleCopy}>
+          Copy Text
         </button>
         <button className="btn btn-info mx-1" onClick={handleClearClick}>
           Click Here To Clear
