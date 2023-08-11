@@ -2,15 +2,16 @@ import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
-import About from "./components/About";
+
 import React, { useState } from "react";
 import Alert from "./components/Alert";
-
+import Home from "./components/Home";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import About from "./components/About";
 
 function App() {
   const [Mode, setMode] = useState("light"); //To check whether darkmode is enabled or not
   const [alert, setAlert] = useState(null);
-
   const showAlert = (message, type) => {
     setAlert({
       msg: message,
@@ -20,6 +21,21 @@ function App() {
       setAlert(null);
     }, 1300);
   };
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home showAlert={showAlert} Mode={Mode} />,
+    },
+    {
+      path: "/home",
+      element: <Home showAlert={showAlert} Mode={Mode} />,
+    },
+    {
+      path: "/about",
+      element: <About />,
+    },
+  ]);
+
   const toggleMode = () => {
     if (Mode === "light") {
       setMode("dark");
@@ -43,14 +59,11 @@ function App() {
 
   return (
     <>
-      <Navbar title = "TextUtils" aboutText = "About Our Community"/>
+      {/* <Navbar title = "TextUtils" aboutText = "About Our Community"/> */}
       {/* <Navbar/> */}
       <Navbar title="TextUtils" mode={Mode} toggleMode={toggleMode} />
+      <RouterProvider router={router} />
       <Alert alert={alert} />
-      <div className="container my-5">
-        {/* <TextForm showAlert={showAlert} heading="Enter your text here..." mode ={Mode}/> */}
-        <About />
-      </div>
     </>
   );
 }
