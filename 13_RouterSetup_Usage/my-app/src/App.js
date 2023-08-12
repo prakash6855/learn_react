@@ -1,12 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import TextForm from "./components/TextForm";
 
 import React, { useState } from "react";
 import Alert from "./components/Alert";
 import Home from "./components/Home";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import About from "./components/About";
 
 function App() {
@@ -21,20 +20,6 @@ function App() {
       setAlert(null);
     }, 1300);
   };
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Home showAlert={showAlert} Mode={Mode} />,
-    },
-    {
-      path: "/home",
-      element: <Home showAlert={showAlert} Mode={Mode} />,
-    },
-    {
-      path: "/about",
-      element: <About />,
-    },
-  ]);
 
   const toggleMode = () => {
     if (Mode === "light") {
@@ -59,11 +44,23 @@ function App() {
 
   return (
     <>
-      {/* <Navbar title = "TextUtils" aboutText = "About Our Community"/> */}
-      {/* <Navbar/> */}
-      <Navbar title="TextUtils" mode={Mode} toggleMode={toggleMode} />
-      <RouterProvider router={router} />
+      <Navbar title="TextUtils" aboutText="About Our Community" />
       <Alert alert={alert} />
+
+      {/* <Navbar/> */}
+      <Routes>
+        <Route
+          path="/"
+          element={<Home showAlert={showAlert} Mode={Mode} />}
+          key={"/"}
+        />
+        <Route
+          path="/home"
+          element={<Home showAlert={showAlert} Mode={Mode} />}
+          key={"/"}
+        />
+        <Route path="/about" element={<About />} key={"/"} />
+      </Routes>
     </>
   );
 }
