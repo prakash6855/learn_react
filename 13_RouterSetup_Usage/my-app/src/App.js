@@ -1,7 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
-
 import React, { useState } from "react";
 import Alert from "./components/Alert";
 import Home from "./components/Home";
@@ -44,7 +43,7 @@ function App() {
 
   return (
     <>
-      <Navbar title="TextUtils" aboutText="About Our Community" />
+      <Navbar title="TextUtils" aboutText="About Our Community" toggleMode={toggleMode} />
       <Alert alert={alert} />
 
       {/* <Navbar/> */}

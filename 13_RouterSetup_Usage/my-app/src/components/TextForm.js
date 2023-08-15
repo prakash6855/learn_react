@@ -11,7 +11,6 @@ export default function TextForm(props) {
     let newText = text.toLowerCase();
     setText(newText);
     props.showAlert("Converted to Lower case", "success");
-
   };
   const handleTitleClick = () => {
     let newText = text
@@ -25,7 +24,6 @@ export default function TextForm(props) {
       .join(" ");
     setText(newText);
     props.showAlert("Converted to Title case", "success");
-
   };
 
   const handleCopy = () => {
@@ -33,14 +31,12 @@ export default function TextForm(props) {
     text.select();
     navigator.clipboard.writeText(text.value);
     props.showAlert("Text copied to clipboard", "success");
-
   };
   const handleClearClick = () => {
     // console.log("You just clicked" +text);
     let newText = "";
     setText(newText);
     props.showAlert("Text cleared", "success");
-
   };
   const handleOnChange = (event) => {
     // console.log("On change");
@@ -63,7 +59,7 @@ export default function TextForm(props) {
             id="myBox"
             style={{
               backgroundColor: props.mode === "dark" ? "grey" : "white",
-              color: props.mode === "dark" ? "white" : "#042743"
+              color: props.mode === "dark" ? "white" : "#042743",
             }}
             onChange={handleOnChange}
             rows="10"
@@ -91,10 +87,10 @@ export default function TextForm(props) {
       >
         <h2>Your text summary</h2>
         <p>
-          {text.split(" ").length}words and {text.length}characters
+          {text.length > 0 ? text.split(" ").length : 0} words and {text.length} characters
         </p>
         <p>{0.008 * text.split(" ").length} Minutes read</p>
-        <h2>{text.length>0?text:"Enter something in the textbox to preview"}</h2>
+        <h2>Enter something in the textbox to preview</h2>
         <p>{text}</p>
       </div>
     </>
