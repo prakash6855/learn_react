@@ -94,6 +94,30 @@ export default function Navbar(props) {
                 border: "2px solid #e80fda",
               }}
             ></div>
+            <div
+              className="bg-light rounded mx-2"
+              onClick={() => {
+                props.toggleMode("light");
+              }}
+              style={{
+                height: "30px",
+                width: "30px",
+                cursor: "pointer",
+                border: "2px solid #e80fda",
+              }}
+            ></div>
+            <div
+              className="bg-dark rounded mx-2"
+              onClick={() => {
+                props.toggleMode("dark");
+              }}
+              style={{
+                height: "30px",
+                width: "30px",
+                cursor: "pointer",
+                border: "2px solid #e80fda",
+              }}
+            ></div>
           </div>
           {/* <div
             className={`form-check form-switch text-${
